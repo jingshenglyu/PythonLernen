@@ -17,3 +17,4 @@ class Son(Father,Mother):  # inheritance class Father/Mother
 
 littleJason = Son()
 littleJason.walk()
+# by Jason

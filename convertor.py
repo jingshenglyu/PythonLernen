@@ -18,3 +18,4 @@ def converter2(weight=100):
 # default is 100 ponds.
 
 converter2()
+# fixed value

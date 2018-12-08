@@ -22,4 +22,4 @@ elif age == 100:
 else:
     print("you can smoke")
 
-    # this is by Jason.
+    # this is by Jason..

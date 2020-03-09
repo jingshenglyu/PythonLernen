@@ -11,7 +11,6 @@ t.fd(300)
 
 t.seth(180)
 t.circle(-150, 45)
-
 t.seth(45)
 t.fd(150)
 

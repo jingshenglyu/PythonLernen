@@ -17,8 +17,8 @@
     - [2.2.3. String <--> Encoding](#223-string----encoding)             
       - [2.2.3.1. ord(): get String](#2231-ord-get-string)             
       - [2.2.3.2. chr(): to String](#2232-chr-to-string)             
-      - [2.2.3.3. String --> Bytes](#2233-string----bytes)             
-      - [2.2.3.4. Decode(): Bytes --> String](#2234-decode-bytes----string)   
+      - [2.2.3.3. encode(): String --> Bytes](#2233-string----bytes)             
+      - [2.2.3.4. decode(): Bytes --> String](#2234-decode-bytes----string)   
 
 
 # CH1 Introduction

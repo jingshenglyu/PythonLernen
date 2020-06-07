@@ -128,7 +128,7 @@ English letters are encoded as 1 byte, Chinese characters are usually 3 bytes, a
 'B'
 ```
 
-#### 2.2.3.3. String --> Bytes
+#### 2.2.3.3. encode(): String --> Bytes
 ```
 >>> 'ABC'.encode('ascii')
 b'ABC'
@@ -140,7 +140,7 @@ e.g. b'ABC'
 2. \x##: Can't show it using ASCII
 </font>
 
-#### 2.2.3.4. Decode(): Bytes --> String
+#### 2.2.3.4. decode(): Bytes --> String
 ```
 >>> b'ABC'.decode('ascii')
 'ABC'

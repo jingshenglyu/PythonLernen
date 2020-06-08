@@ -28,6 +28,10 @@
     - [2.5. Conditonals and Looping](#25-conditonals-and-looping)
     - [2.6. Dict{} and set()](#26-dict-and-set)
         - [2.6.1. Dict{}: dictionary.](#261-dict-dictionary)
+        - [2.6.2. Set()](#262-set)
+        - [2.6.3 Difference between dict{} and set()](#263-difference-between-dict-and-set)
+    - [Summary for CH2](#summary-for-ch2)
+- [CH3 Function](#ch3-function)
 
 <!-- /TOC -->
 
@@ -232,3 +236,28 @@ You can't change it to point to another object. But the list it points to is its
 * dict{}: It can be used to find the value very fastly.  
 But it will use the large store-place. 
 * <b>Hash</b>: We use this key-value to find the right value quickly. It is called <b>Hash</b>.
+
+### 2.6.2. Set()
+* set(): a set of **key** and **no duplikated** key. The defination is the same as the **set** from mathmatic. You can make the **and**, **or** operation.
+```
+>>> s1 = set([1,2,3])
+>>> s2 = set([2,3,4])
+>>> s1&s2
+{2, 3}
+>>> s1|s2
+{1, 2, 3, 4}
+```
+
+### 2.6.3 Difference between dict{} and set()
+Dict{} use **key-value**. Set() has only key **no value**.
+
+## Summary for CH2
+* list[]: a simple collection of data, can **use indexes**;
+
+* tuple(): a collection of data that can be used as a whole and **cannot be modified**;
+
+* dict{}: use **keys and values** to find data;
+
+* set(): data **appear only once**, only care whether the data appear, do not care its location;
+
+# CH3 Function

@@ -32,6 +32,20 @@
         - [2.6.3 Difference between dict{} and set()](#263-difference-between-dict-and-set)
     - [Summary for CH2](#summary-for-ch2)
 - [CH3 Function](#ch3-function)
+    - [3.1. Call a function](#31-call-a-function)
+        - [3.1.1. Abstract](#311-abstract)
+        - [3.1.2. Built-in function:](#312-built-in-function)
+    - [3.2. Define a function](#32-define-a-function)
+        - [3.2.1 example:](#321-example)
+        - [3.2.2. Placeholder](#322-placeholder)
+        - [3.2.3. Return "more values"](#323-return-more-values)
+    - [3.3. Arguments of Function](#33-arguments-of-function)
+        - [3.3.1. Local Argument](#331-local-argument)
+        - [3.3.2. Default Argument](#332-default-argument)
+        - [3.3.3. Variable Arguments](#333-variable-arguments)
+        - [3.3.4. Keyword Argument](#334-keyword-argument)
+        - [3.3.5. Namekeyword Argument](#335-namekeyword-argument)
+        - [3.3.6. Arguments Combination](#336-arguments-combination)
 
 <!-- /TOC -->
 
@@ -261,3 +275,150 @@ Dict{} use **key-value**. Set() has only key **no value**.
 * set(): data **appear only once**, only care whether the data appear, do not care its location;
 
 # CH3 Function
+## 3.1. Call a function
+### 3.1.1. Abstract 
+* The function is a form for **code abstract**.  
+### 3.1.2. Built-in function:  
+* We can check the [function](https://docs.python.org/3/library/functions.html) of python3 and know how to use the built-in functions.
+```
+>>> max(2, 3, 1, -5)
+3
+```
+## 3.2. Define a function
+### 3.2.1 example:
+```
+def my_abs(x):
+    if x >= 0:
+        return x
+    else:
+        return -x
+```
+* If you want to call this `my_abs`
+function. You can save this file as abstest.py. Then you can use `from abstest import my_abs` to call this function in other .py files. We will learn `import` in [Module]().
+
+### 3.2.2. Placeholder  
+If now you **don't know** how to write the expression for this function. You can first use `pass` as a **Placeholder**. Without placeholder, you will get **error** when you run your code.
+
+### 3.2.3. Return "more values"
+* Run this code to calculate the new location:
+```
+import math
+
+def move(x, y, step, angle=0):
+    nx = x + step * math.cos(angle)
+    ny = y - step * math.sin(angle)
+    # We define clockwise as moving in a positive direction.
+
+    return nx, ny
+```
+* Calculate the new location with calling the `move` function:
+```
+>>> x, y = move(100, 100, 60, math.pi/6)
+>>> print(x, y)
+151.96152422706632 70.0
+```
+* Wait! Why does it return **two values** for this example?  
+It is fake. Let us print this result.
+```
+>>> r = move(100, 100, 60, math.pi/6)
+>>> print(r)
+(151.96152422706632 70.0)
+```
+* Ah! The result is a **tuple**. It is also a single value for return.
+
+  * Practice: Definete a function`quadratic(a, b, c)` to calculate the **results** of **Quadratic Equation**  
+  **Input**: print(quadratic(2, 3, 1))    
+  **Output**: (-0.5, -1.0)  
+  [Code for QuaFunc](https://github.com/jingshenglyu/Python_Learning/blob/master/LXF_Py/practice/3.2.2.%20quadratic.py)
+
+## 3.3. Arguments of Function
+### 3.3.1. Local Argument
+```
+def power(x):
+    return x*x
+```
+* `x` of `power(x)` is a local argument. This function is used to calculate the power of a number. If we want to know the **n-th power** of a number, we should change the arguments of this function. It should be `power(x, n)`.
+
+### 3.3.2. Default Argument
+* If we want to define a function `power(x, n)`, we can firstly think, how to calculate `power(5)`. We don't need to write `power(5, 2)`. Because `power()` means a number multiply self twice. We should here **Default Argument**.   
+  
+  * Code:
+```
+def power(x, n=2):
+    s = 1
+    while n > 0:
+        n = n - 1
+        s = s * x
+    return s
+
+print(power(5))
+print(power(5, 3))
+
+25
+125
+```
+* Why should we use default arguments?  
+It can make our code **easier**, when we need **only one** argument for calling function.
+* Default Argument: It must be pointed to **unchanged element**.
+
+### 3.3.3. Variable Arguments
+* We want to define a function to calculate `a^2 + b^2 + c^2 + ...`. We don't know how many arguments should we use. So the code is followed:
+```
+def calc(*numbers):
+    sum = 0
+    for n in numbers:
+        sum = sum + n * n
+    return sum
+```
+`*numbers`: It means the argument is variable.   
+Let's test it
+```
+>>> calc(1, 2)
+5
+>>> calc()
+0
+```
+* <b>We can add a `*` before a list or tuple. Then it will be variable. </b>
+
+### 3.3.4. Keyword Argument
+* We use `**kw` to declare the keyword argument. 
+```
+def person(name, age, **kw):
+    print('name:',name, 'age:',age, 'other:', kw)
+```
+* Why should we use **keyword argument**?
+  * If we want to register the information of the students. The **necessary** information is 'name' and 'age'. But the students can also write down some **optional information**. For this **optional information** we can use **keyword argument**.
+
+* Calling this function we can kown that this **keyword argument** is **dict{}**.
+
+```
+>>> person('Jack',20)
+name: Jack, age: 20, other: {}
+extra = {}
+```
+
+* We can also so write:
+```
+extra = {'city': 'Beijing'}
+person('Jack', 20, **extra)
+Name: Jack, age: 20, other: {'city': 'Beijing'}
+```
+
+### 3.3.5. Namekeyword Argument
+* If we want to **limit** the keyword argument, we can use **namekeyword argument**.
+```
+def person(name, age, *, city, job):
+    print(name, age, city, job)
+```
+
+* The arguments after `*` are **namekeyword argument**. If the user want to input other information to **namekeyword argument**, there is error.
+
+### 3.3.6. Arguments Combination
+* The programmer can use '**local argument**','**default argument**', '**variable argument**' / '**namekeyword argument**' and '**keyword argument**'. They must be in this order.
+```
+def f1(a, b, c=0, *args, **kw):
+    print('a=',a, 'b=',b, 'c=',c, 'args=',args, 'kw=',kw)
+```
+* For every function, you can call it with `func(*arg, **kw)`.
+
+
